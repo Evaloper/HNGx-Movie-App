@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-// import "./index.css";
 import IMOB from "./../../../assets/IMOB.png";
 import cherry from "./../../../assets/strawberry.png";
 import { Icon } from "../../atoms/Icons";
+
 
 export const MovieCard = () => {
     const [movies, setMovies] = useState([]);
@@ -16,14 +16,12 @@ export const MovieCard = () => {
     };
 
     useEffect(() => {
-        const discoverUrl =
-            "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+        const discoverUrl = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
         const discoverOptions = {
             method: "GET",
             headers: {
                 accept: "application/json",
-                Authorization:
-                    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTg1ZDEzNDIzMTc4YTY4ZTk0OWU5NDUwYWQ2NTg3OCIsInN1YiI6IjY0OTc2MDA3OTU1YzY1MDBhYzg4ZjRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I3905bVsCWrmqEIxaGU6uV6zLfPC8Yhsxk8s_aDpugA",
+                Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTg1ZDEzNDIzMTc4YTY4ZTk0OWU5NDUwYWQ2NTg3OCIsInN1YiI6IjY0OTc2MDA3OTU1YzY1MDBhYzg4ZjRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I3905bVsCWrmqEIxaGU6uV6zLfPC8Yhsxk8s_aDpugA",
             },
         };
 
@@ -36,8 +34,7 @@ export const MovieCard = () => {
                         method: "GET",
                         headers: {
                             accept: "application/json",
-                            Authorization:
-                                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTg1ZDEzNDIzMTc4YTY4ZTk0OWU5NDUwYWQ2NTg3OCIsInN1YiI6IjY0OTc2MDA3OTU1YzY1MDBhYzg4ZjRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I3905bVsCWrmqEIxaGU6uV6zLfPC8Yhsxk8s_aDpugA",
+                            Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTg1ZDEzNDIzMTc4YTY4ZTk0OWU5NDUwYWQ2NTg3OCIsInN1YiI6IjY0OTc2MDA3OTU1YzY1MDBhYzg4ZjRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I3905bVsCWrmqEIxaGU6uV6zLfPC8Yhsxk8s_aDpugA",
                         },
                     };
 
@@ -84,12 +81,11 @@ export const MovieCard = () => {
                                         <img
                                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                             alt={movie.title}
-                                            data-testid="movie-poster"
-                                        />
+                                            data-testid="movie-poster" />
                                     </div>
                                     <div key={movie.id} className="card-main">
                                         <p className="my-3 text-sm text-grey font-medium">{movie.productionCountries.join(", ")} - {movie.productionYear}</p>
-                                        <h3 className="text-xl text-black" data-testid="movie-title" >{movie.title}</h3>
+                                        <h3 className="text-xl text-black" data-testid="movie-title">{movie.title}</h3>
                                         <div className="flex my-3 text-xs justify-between items-center">
                                             <div className="flex items-center">
                                                 <img src={IMOB} alt="IMOB" />
@@ -101,7 +97,7 @@ export const MovieCard = () => {
                                             </div>
                                         </div>
                                         <p className="text-sm text-grey font-medium">{movie.genres.join(", ")}</p>
-                                        <p className="text-sm text-grey font-medium" data-testid="movie-release-date" >{movie.releaseDate}</p>
+                                        <p className="text-sm text-grey font-medium" data-testid="movie-release-date">{movie.releaseDate}</p>
                                     </div>
                                 </li>
                             </div>

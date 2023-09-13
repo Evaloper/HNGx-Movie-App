@@ -10,7 +10,7 @@ export const NavBar = () => {
         <p className='logo-name'>MovieBox</p>
       </div>
       <div className='search'>
-        <input type='search' className='input' placeholder='What do you want to watch' />
+        <input type='search' className='input' placeholder='What do you want to watch' id="search" />
         <Icon name="search" className="search-icon " />
       </div>
       <div className='signin-menu flex items-center'>
