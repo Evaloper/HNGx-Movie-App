@@ -1,9 +1,8 @@
-// src/components/HomePage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { NavBar } from '../NavBar';
-import IMOB from "./../../../assets/Big-IMOB.png";
-import cherry from "./../../../assets/Big-Cherry.png";
+import IMOB from "./Images/Big-IMOB.png";
+import cherry from "./Images/Big-Cherry.png";
 import "./index.scss";
 import Play from "./../../../assets/Play1.png";
 
@@ -15,7 +14,7 @@ export const Hero = () => {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const apiKey = '3585d13423178a68e949e9450ad65878';
+                const apiKey = import.meta.env.VITE_API_KEY;
                 const response = await axios.get(
                     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&language=en-US&page=1`
                 );
@@ -43,15 +42,15 @@ export const Hero = () => {
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    height: '90vh',
+                    // height: '90vh',
                 }}
             >
                 <NavBar />
                 {backgroundMovie && (
-                    <div className='hero-details pt-44 mx-24'>
-                        <div className="background-movie-details w-2/5">
-                            <h2 className='text-5xl'>{backgroundMovie.title}</h2>
-                            <div className="flex my-3 text-xs items-center ">
+                    <div className='hero-details'>
+                        <div className="background-movie-details">
+                            <h2 className='title'>{backgroundMovie.title}</h2>
+                            <div className="flex text-xs items-center">
                                 <div className="flex items-center my-5">
                                     <img src={IMOB} alt="IMOB" className='w-20' />
                                     <span className="ml-6 text-lg">{backgroundMovie.vote_average * 10}.0/ 100</span>
@@ -61,8 +60,8 @@ export const Hero = () => {
                                     <span className='text-lg'>{backgroundMovie.vote_average * 100 / 10}%</span>
                                 </div>
                             </div>
-                            <p className='text-xl'>{backgroundMovie.overview}</p>
-                            <div className='flex items-center my-5'>
+                            <p className='overview'>{backgroundMovie.overview}</p>
+                            <div className='flex items-center my-5 max-[768px]:justify-center'>
                                 <a className=' flex items-center play-btn text-white text-xl bg-[#BE123C]'>
                                     <img src={Play} className='play-btn-img' />
                                     WATCH TRAILLER

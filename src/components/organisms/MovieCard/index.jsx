@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import IMOB from "./../../../assets/IMOB.png";
-import cherry from "./../../../assets/strawberry.png";
+import cherry from "./Images/strawberry.png"
+import favorite from "./Images/favorite.png";
 import { Icon } from "../../atoms/Icons";
+import "./index.scss"
 
 
 export const MovieCard = () => {
@@ -21,7 +23,7 @@ export const MovieCard = () => {
             method: "GET",
             headers: {
                 accept: "application/json",
-                Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzNTg1ZDEzNDIzMTc4YTY4ZTk0OWU5NDUwYWQ2NTg3OCIsInN1YiI6IjY0OTc2MDA3OTU1YzY1MDBhYzg4ZjRkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I3905bVsCWrmqEIxaGU6uV6zLfPC8Yhsxk8s_aDpugA",
+                Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
             },
         };
 
@@ -62,14 +64,14 @@ export const MovieCard = () => {
 
     return (
         <>
-            <div className="text-black mx-32 flex justify-between items-center py-16">
+            <div className=" movie-card-header text-black flex justify-between items-center">
                 <h2 className="text-2xl font-bold">Featured Movie</h2>
                 <div className="text-[#BE123C] flex justify between items-center">
                     <p>See more</p>
                     <Icon name="arrow-right" />
                 </div>
             </div>
-            <p className="text-black">Favourite</p>
+            <h3 className="text-black favorite">TV SERIES</h3>
             <div className="flex gap-x-8 main-div mx-24 max-[500px]:mx-0 max-[768px]:mx-0 max-[980px]:mx-10">
                 <div className="w-full p-2 overflow-x-auto">
                     <ol className="grid grid-cols-4 max-[980px]:grid-cols-3 max-[768px]:grid-cols-2 max-[500px]:grid-cols-1 gap-6 max-[982px]:gap-2 ">
@@ -77,13 +79,13 @@ export const MovieCard = () => {
                             <div className="div-sect" key={movie.id} data-testid="movie-card">
                                 <li className="p-4 mb-2 text-white">
                                     <div className="movie-box">
-                                        <Icon name="favorite" className="float-right relative top-12 mr-5" />
+                                        <img src={favorite} className="float-right relative top-12 mr-5" />
                                         <img
                                             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                             alt={movie.title}
                                             data-testid="movie-poster" />
                                     </div>
-                                    <div key={movie.id} className="card-main">
+                                    <div key={movie.id} className="card-main text-black">
                                         <p className="my-3 text-sm text-grey font-medium">{movie.productionCountries.join(", ")} - {movie.productionYear}</p>
                                         <h3 className="text-xl text-black" data-testid="movie-title">{movie.title}</h3>
                                         <div className="flex my-3 text-xs justify-between items-center">
